@@ -29,14 +29,14 @@ class Planets
 	 	ydist = @y - planet.y
 	 	dist = Math.sqrt((xdist**2) + (ydist**2))
 	 	@total_force = ((G*@mass*planet.mass)/(dist**2))
-	 	@xforce += (@total_force * xdist) / dist
-		@yforce += (@total_force * ydist) /dist
+	 	@xforce -= (@total_force * xdist) / dist
+		@yforce -= (@total_force * ydist) /dist
 		
 	end
 	def calculate_accel
 		puts "calc A"
-	 	 @xaccel =  -(@xforce / @mass)
-	 	 @yaccel = -(@yforce / @mass)
+	 	 @xaccel =  (@xforce / @mass)
+	 	 @yaccel = (@yforce / @mass)
 	 	 puts @xaccel , @yaccel
 	 	 puts @xforce , yforce
 	 	 @xforce = 0
