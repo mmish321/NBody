@@ -18,13 +18,12 @@ class Universe < Gosu::Window
 		@planets = []
 		@planets_data.each {|planet| 
 			planet = planet.split(" ")
-			@planets.push(Planets.new(planet[0].to_f,planet[1].to_f,planet[2].to_f,planet[3].to_f,planet[4].to_f,planet[5],planet[6],radius.to_f))
+			@planets.push(Planets.new(planet[0].to_f,planet[1].to_f,planet[2].to_f,planet[3].to_f,planet[4].to_f,planet[5],radius.to_f))
 		}
 	end
 
 	def update
 		@planets.each do |planet|
-			
 			for i in 0...@planets.length
 				if @planets[i].name != planet.name
 			  		planet.calculate_total_force(@planets[i])
