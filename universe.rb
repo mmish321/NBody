@@ -24,18 +24,23 @@ class Universe < Gosu::Window
 
 	def update
 		@planets.each do |planet|
+			
 			for i in 0...@planets.length
-				if @planets[i] != planet.name
-				planet.calculate_gravity(@planets[i])
-				end
-			end
+				if @planets[i].name != planet.name
+			  		planet.calculate_total_force(@planets[i])
+
+			  	end
+			 end
+			 
+			planet.calculate_accel
+			planet.calculate_velocity
+			planet.calculate_position
+			 
 		end
 	end
-	def ok
-		@planets.each do |planet|
-			puts planet.total_force
-		end
-	end
+	
+
+		
 	def draw
 		@background_image.draw(0,0,0)
 		@planets.each do |planet|
@@ -49,4 +54,3 @@ end
 
 window = Universe.new
 window.show
-window.ok
